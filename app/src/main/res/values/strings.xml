@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MorseCode</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="toMor">Convert to Morse Code</string>
+    <string name="toEn">Convert to English</string>
+    <string name="copy">Copy</string>
     <string name="action_settings">Settings</string>
 </resources>
