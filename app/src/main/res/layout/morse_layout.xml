@@ -5,30 +5,34 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:id="@+id/inputText"
+        android:id="@+id/inputEnglishText"
         android:textSize="24sp"
         android:background="#484e61"
         android:textColor="#fff"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:id="@+id/convertText"
+        android:id="@+id/convertToMorseText"
         android:textSize="20sp"
-        android:layout_below="@+id/inputText"
+        android:layout_below="@+id/inputEnglishText"
         android:background="#27a5f9"
         android:textColor="#fff"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/convertText"
-        android:id="@+id/copy_button"
-        android:text="@string/copy"/>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:id="@+id/keyboard">
+        <TableRow>
+            <Button
+                android:id="@+id/paste_english_button"
+                android:text="@string/paste"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/copy_morse_button"
+                android:text="@string/copy"
+                android:layout_weight="1"/>
+        </TableRow>
         <TableRow>
             <Button
                 android:text="1"

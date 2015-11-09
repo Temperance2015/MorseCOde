@@ -9,14 +9,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.temperance2015.morsecode.R;
+import com.temperance2015.morsecode.model.Convert;
 
 /**
  * Created by Isabel on 2015/11/7.
  */
 public class MorseActivity extends BaseActivity implements OnClickListener{
 
-    private TextView inputText;
-    private TextView convertText;
+    private TextView inputEnglishText;
+    private TextView convertToMorseText;
     private Button space;
     private Button backSpace;
     private Button slash;
@@ -56,14 +57,15 @@ public class MorseActivity extends BaseActivity implements OnClickListener{
     private Button x;
     private Button y;
     private Button z;
-    private Button copy;
+    private Button paste_english;
+    private Button copy_morse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.morse_layout);
-        inputText = (TextView) findViewById(R.id.inputText);
-        convertText = (TextView) findViewById(R.id.convertText);
+        inputEnglishText = (TextView) findViewById(R.id.inputEnglishText);
+        convertToMorseText = (TextView) findViewById(R.id.convertToMorseText);
         space = (Button) findViewById(R.id.space);
         backSpace = (Button) findViewById(R.id.back_space);
         slash = (Button) findViewById(R.id.slash);
@@ -103,7 +105,8 @@ public class MorseActivity extends BaseActivity implements OnClickListener{
         x = (Button) findViewById(R.id.x);
         y = (Button) findViewById(R.id.y);
         z = (Button) findViewById(R.id.z);
-        copy = (Button) findViewById(R.id.copy_button);
+        paste_english = (Button) findViewById(R.id.paste_english_button);
+        copy_morse = (Button) findViewById(R.id.copy_morse_button);
         space.setOnClickListener(this);
         backSpace.setOnClickListener(this);
         slash.setOnClickListener(this);
@@ -143,179 +146,194 @@ public class MorseActivity extends BaseActivity implements OnClickListener{
         x.setOnClickListener(this);
         y.setOnClickListener(this);
         z.setOnClickListener(this);
-        copy.setOnClickListener(this);
+        paste_english.setOnClickListener(this);
+        copy_morse.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v){
+        ClipboardManager cbm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);//系统剪贴板实例
+        String strE = "";
+        String strM;
         switch (v.getId()){
             case R.id.a:
-                inputText.setText(inputText.getText()+"a");
-                convertText.setText(convertText.getText()+toMorse("a")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"a");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("a")+" ");
                 break;
             case R.id.b:
-                inputText.setText(inputText.getText()+"b");
-                convertText.setText(convertText.getText()+toMorse("b")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"b");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("b")+" ");
                 break;
             case R.id.c:
-                inputText.setText(inputText.getText()+"c");
-                convertText.setText(convertText.getText()+toMorse("c")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"c");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("c")+" ");
                 break;
             case R.id.d:
-                inputText.setText(inputText.getText()+"d");
-                convertText.setText(convertText.getText()+toMorse("d")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"d");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("d")+" ");
                 break;
             case R.id.e:
-                inputText.setText(inputText.getText()+"e");
-                convertText.setText(convertText.getText()+toMorse("e")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"e");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("e")+" ");
                 break;
             case R.id.f:
-                inputText.setText(inputText.getText()+"f");
-                convertText.setText(convertText.getText()+toMorse("f")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"f");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("f")+" ");
                 break;
             case R.id.g:
-                inputText.setText(inputText.getText()+"g");
-                convertText.setText(convertText.getText()+toMorse("g")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"g");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("g")+" ");
                 break;
             case R.id.h:
-                inputText.setText(inputText.getText()+"h");
-                convertText.setText(convertText.getText()+toMorse("h")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"h");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("h")+" ");
                 break;
             case R.id.i:
-                inputText.setText(inputText.getText()+"i");
-                convertText.setText(convertText.getText()+toMorse("i")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"i");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("i")+" ");
                 break;
             case R.id.j:
-                inputText.setText(inputText.getText()+"j");
-                convertText.setText(convertText.getText()+toMorse("j")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"j");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("j")+" ");
                 break;
             case R.id.k:
-                inputText.setText(inputText.getText()+"k");
-                convertText.setText(convertText.getText()+toMorse("k")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"k");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("k")+" ");
                 break;
             case R.id.l:
-                inputText.setText(inputText.getText()+"l");
-                convertText.setText(convertText.getText()+toMorse("l")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"l");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("l")+" ");
                 break;
             case R.id.m:
-                inputText.setText(inputText.getText()+"m");
-                convertText.setText(convertText.getText()+toMorse("m")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"m");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("m")+" ");
                 break;
             case R.id.n:
-                inputText.setText(inputText.getText()+"n");
-                convertText.setText(convertText.getText()+toMorse("n")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"n");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("n")+" ");
                 break;
             case R.id.o:
-                inputText.setText(inputText.getText()+"o");
-                convertText.setText(convertText.getText()+toMorse("o")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"o");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("o")+" ");
                 break;
             case R.id.p:
-                inputText.setText(inputText.getText()+"p");
-                convertText.setText(convertText.getText()+toMorse("p")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"p");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("p")+" ");
                 break;
             case R.id.q:
-                inputText.setText(inputText.getText()+"q");
-                convertText.setText(convertText.getText()+toMorse("q")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"q");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("q")+" ");
                 break;
             case R.id.r:
-                inputText.setText(inputText.getText()+"r");
-                convertText.setText(convertText.getText()+toMorse("r")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"r");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("r")+" ");
                 break;
             case R.id.s:
-                inputText.setText(inputText.getText()+"s");
-                convertText.setText(convertText.getText()+toMorse("s")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"s");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("s")+" ");
                 break;
             case R.id.t:
-                inputText.setText(inputText.getText()+"t");
-                convertText.setText(convertText.getText()+toMorse("t")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"t");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("t")+" ");
                 break;
             case R.id.u:
-                inputText.setText(inputText.getText()+"u");
-                convertText.setText(convertText.getText()+toMorse("u")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"u");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("u")+" ");
                 break;
             case R.id.v:
-                inputText.setText(inputText.getText()+"v");
-                convertText.setText(convertText.getText()+toMorse("v")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"v");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("v")+" ");
                 break;
             case R.id.w:
-                inputText.setText(inputText.getText()+"w");
-                convertText.setText(convertText.getText()+toMorse("w")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"w");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("w")+" ");
                 break;
             case R.id.x:
-                inputText.setText(inputText.getText()+"x");
-                convertText.setText(convertText.getText()+toMorse("x")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"x");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("x")+" ");
                 break;
             case R.id.y:
-                inputText.setText(inputText.getText()+"y");
-                convertText.setText(convertText.getText()+toMorse("y")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"y");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("y")+" ");
                 break;
             case R.id.z:
-                inputText.setText(inputText.getText()+"z");
-                convertText.setText(convertText.getText()+toMorse("z")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"z");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("z")+" ");
                 break;
             case R.id.one:
-                inputText.setText(inputText.getText()+"1");
-                convertText.setText(convertText.getText()+toMorse("1")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"1");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("1")+" ");
                 break;
             case R.id.two:
-                inputText.setText(inputText.getText()+"2");
-                convertText.setText(convertText.getText()+toMorse("2")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"2");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("2")+" ");
                 break;
             case R.id.three:
-                inputText.setText(inputText.getText()+"3");
-                convertText.setText(convertText.getText()+toMorse("3")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"3");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("3")+" ");
                 break;
             case R.id.four:
-                inputText.setText(inputText.getText()+"4");
-                convertText.setText(convertText.getText()+toMorse("4")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"4");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("4")+" ");
                 break;
             case R.id.five:
-                inputText.setText(inputText.getText()+"5");
-                convertText.setText(convertText.getText()+toMorse("5")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"5");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("5")+" ");
                 break;
             case R.id.six:
-                inputText.setText(inputText.getText()+"6");
-                convertText.setText(convertText.getText()+toMorse("6")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"6");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("6")+" ");
                 break;
             case R.id.seven:
-                inputText.setText(inputText.getText()+"7");
-                convertText.setText(convertText.getText()+toMorse("7")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"7");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("7")+" ");
                 break;
             case R.id.eight:
-                inputText.setText(inputText.getText()+"8");
-                convertText.setText(convertText.getText()+toMorse("8")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"8");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("8")+" ");
                 break;
             case R.id.nine:
-                inputText.setText(inputText.getText()+"9");
-                convertText.setText(convertText.getText()+toMorse("9")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"9");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("9")+" ");
                 break;
             case R.id.zero:
-                inputText.setText(inputText.getText()+"0");
-                convertText.setText(convertText.getText()+toMorse("0")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"0");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("0")+" ");
                 break;
             case R.id.slash:
-                inputText.setText(inputText.getText()+"/");
-                convertText.setText(convertText.getText()+toMorse("/")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+"/");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse("/")+" ");
                 break;
             case R.id.space:
-                inputText.setText(inputText.getText()+" ");
-                convertText.setText(convertText.getText()+toMorse(" ")+" ");
+                inputEnglishText.setText(inputEnglishText.getText()+" ");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse(" ")+" ");
                 break;
             case R.id.back_space:
-                String strE = inputText.getText().toString();
-                String strM = convertText.getText().toString();
+                strE = inputEnglishText.getText().toString();
+                strM = convertToMorseText.getText().toString();
                 if (strE.length() >= 1 && strM.length() >= 1)
                 {
                     String lastChar = String.valueOf(strE.charAt(strE.length()-1));
-                    strM = strM.substring(0,strM.length()-1-toMorse(String.valueOf(lastChar)).length());
+                    strM = strM.substring(0,strM.length()-1-Convert.toMorse(String.valueOf(lastChar)).length());
                     strE = strE.substring(0,strE.length()-1);
-                    convertText.setText(strM);
-                    inputText.setText(strE);
+                    convertToMorseText.setText(strM);
+                    inputEnglishText.setText(strE);
                 }
                 break;
-            case R.id.copy_button:
-                ClipboardManager cbm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);//系统剪贴板实例
-                ClipData clipData = ClipData.newPlainText("simple text",convertText.getText().toString());// Creates a new text clip to put on the clipboard
+            case R.id.paste_english_button:
+                ClipData clipDataPaste = cbm.getPrimaryClip();
+                int countPaste = clipDataPaste.getItemCount();
+                for(int i = 0;i < countPaste;i++){
+                    ClipData.Item item = clipDataPaste.getItemAt(i);
+                    CharSequence str = item.coerceToText(MorseActivity.this);
+                    strE = strE + str;
+                }
+                strM = Convert.sentenceToMorse(strE);
+                inputEnglishText.setText(strE);
+                convertToMorseText.setText(strM);
+                break;
+            case R.id.copy_morse_button:
+                ClipData clipData = ClipData.newPlainText("simple text",convertToMorseText.getText().toString());// Creates a new text clip to put on the clipboard
                 cbm.setPrimaryClip(clipData);// Set the clipboard's primary clip.
                 break;
             default:
@@ -323,83 +341,5 @@ public class MorseActivity extends BaseActivity implements OnClickListener{
         }
     }
 
-    public String toMorse(String letter){
-        if (letter.equals("a"))
-            return "·-";
-        if (letter.equals("b"))
-            return "-···";
-        if (letter.equals("c"))
-            return "-·-·";
-        if (letter.equals("d"))
-            return "-··";
-        if (letter.equals("e"))
-            return "·";
-        if (letter.equals("f"))
-            return "··-·";
-        if (letter.equals("g"))
-            return "--·";
-        if (letter.equals("h"))
-            return "····";
-        if (letter.equals("i"))
-            return "··";
-        if (letter.equals("j"))
-            return "·---";
-        if (letter.equals("k"))
-            return "-·-";
-        if (letter.equals("l"))
-            return "·-··";
-        if (letter.equals("m"))
-            return "--";
-        if (letter.equals("n"))
-            return "-·";
-        if (letter.equals("o"))
-            return "---";
-        if (letter.equals("p"))
-            return "·--·";
-        if (letter.equals("q"))
-            return "--·-";
-        if (letter.equals("r"))
-            return "·-·";
-        if (letter.equals("s"))
-            return "···";
-        if (letter.equals("t"))
-            return "-";
-        if (letter.equals("u"))
-            return "··-";
-        if (letter.equals("v"))
-            return "···-";
-        if (letter.equals("w"))
-            return "·--";
-        if (letter.equals("x"))
-            return "-··-";
-        if (letter.equals("y"))
-            return "-·--";
-        if (letter.equals("z"))
-            return "--··";
-        if (letter.equals("1"))
-            return "·----";
-        if (letter.equals("2"))
-            return "··---";
-        if (letter.equals("3"))
-            return "···--";
-        if (letter.equals("4"))
-            return "····-";
-        if (letter.equals("5"))
-            return "·····";
-        if (letter.equals("6"))
-            return "-····";
-        if (letter.equals("7"))
-            return "--···";
-        if (letter.equals("8"))
-            return "---··";
-        if (letter.equals("9"))
-            return "----·";
-        if (letter.equals("0"))
-            return "-----";
-        if (letter.equals("/"))
-            return "-··--";
-        if (letter.equals(" "))
-            return "/";
-        else return "";
-    }
+
 }
