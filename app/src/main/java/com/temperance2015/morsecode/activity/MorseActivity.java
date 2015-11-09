@@ -306,7 +306,7 @@ public class MorseActivity extends BaseActivity implements OnClickListener{
                 break;
             case R.id.space:
                 inputEnglishText.setText(inputEnglishText.getText()+" ");
-                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse(" ")+" ");
+                convertToMorseText.setText(convertToMorseText.getText()+Convert.toMorse(" "));
                 break;
             case R.id.back_space:
                 strE = inputEnglishText.getText().toString();

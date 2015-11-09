@@ -1,5 +1,7 @@
 package com.temperance2015.morsecode.model;
 
+import android.widget.Toast;
+
 /**
  * Created by Isabel on 2015/11/9.
  */
@@ -85,6 +87,86 @@ public class Convert {
         else return "?";
     }
 
+    public static boolean isMorseCode(String morseCode){
+        if (morseCode.equals("·-"))
+            return true;
+        if (morseCode.equals("-···"))
+            return true;
+        if (morseCode.equals("-·-·"))
+            return true;
+        if (morseCode.equals("-··"))
+            return true;
+        if (morseCode.equals("·"))
+            return true;
+        if (morseCode.equals("··-·"))
+            return true;
+        if (morseCode.equals("--·"))
+            return true;
+        if (morseCode.equals("····"))
+            return true;
+        if (morseCode.equals("··"))
+            return true;
+        if (morseCode.equals("·---"))
+            return true;
+        if (morseCode.equals("-·-"))
+            return true;
+        if (morseCode.equals("·-··"))
+            return true;
+        if (morseCode.equals("--"))
+            return true;
+        if (morseCode.equals("-·"))
+            return true;
+        if (morseCode.equals("---"))
+            return true;
+        if (morseCode.equals("·--·"))
+            return true;
+        if (morseCode.equals("--·-"))
+            return true;
+        if (morseCode.equals("·-·"))
+            return true;
+        if (morseCode.equals("···"))
+            return true;
+        if (morseCode.equals("-"))
+            return true;
+        if (morseCode.equals("··-"))
+            return true;
+        if (morseCode.equals("···-"))
+            return true;
+        if (morseCode.equals("·--"))
+            return true;
+        if (morseCode.equals("-··-"))
+            return true;
+        if (morseCode.equals("-·--"))
+            return true;
+        if (morseCode.equals("--··"))
+            return true;
+        if (morseCode.equals("·----"))
+            return true;
+        if (morseCode.equals("··---"))
+            return true;
+        if (morseCode.equals("···--"))
+            return true;
+        if (morseCode.equals("····-"))
+            return true;
+        if (morseCode.equals("·····"))
+            return true;
+        if (morseCode.equals("-····"))
+            return true;
+        if (morseCode.equals("--···"))
+            return true;
+        if (morseCode.equals("---··"))
+            return true;
+        if (morseCode.equals("----·"))
+            return true;
+        if (morseCode.equals("-----"))
+            return true;
+        if (morseCode.equals("-··--"))
+            return true;
+        if (morseCode.equals("/"))
+            return true;
+        else return false;
+    }
+
     public static String toEnglish(String morseCode){
         if (morseCode.equals("·-"))
             return "a";
@@ -162,7 +244,7 @@ public class Convert {
             return "/";
         if (morseCode.equals("/"))
             return " ";
-        else return "?";
+        else return "";
     }
 
     public static String sentenceToMorse(String sentence){
@@ -175,30 +257,17 @@ public class Convert {
 
     public static String longCodeToEnglish(String longCode){
         String resultStr = "";
-        int markSpace = longCode.indexOf(" ");
-        int markSlash = longCode.indexOf("/");
-        if(markSpace == -1 || markSlash == -1){
-            resultStr = toEnglish(longCode);
-        }else {
-            int j = 0;
-            for(int i = min(markSlash,markSpace);i < longCode.length();i++){
-                if (longCode.charAt(i) == ' '){
-                    resultStr = resultStr + toEnglish(longCode.substring(j,i));
-                    j = i+1;
-                }else if (longCode.charAt(i) == '/'){
-                    resultStr = resultStr + toEnglish(longCode.substring(j,i)) + " ";
-                    j = i+1;
-                }
+        int mark = 0;
+        longCode += " ";
+        for (int i = 0;i < longCode.length();i++){
+            if (longCode.charAt(i) == ' '){
+                resultStr += toEnglish(longCode.substring(mark,i));
+                mark = i + 1;
+            }else if (longCode.charAt(i) == '/'){
+                resultStr += toEnglish(longCode.substring(mark,i))+" ";
+                mark = i + 1;
             }
         }
         return resultStr;
-    }
-
-    public static int min(int a,int b){
-        if(a>=b){
-            return b;
-        }else {
-            return a;
-        }
     }
 }
